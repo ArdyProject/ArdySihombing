@@ -1,0 +1,360 @@
+
+<!DOCTYPE html>
+<html lang="id" class="scroll-smooth">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+    <title>Ardy | Web Portfolio</title>
+    <link rel="icon" type="image/png" href="assets/iconku.png">
+    <!-- Tema Warna Address Bar & Status Bar HP (Sesuaikan kode warnanya) -->
+<meta name="theme-color" content="white"> 
+<meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+
+<!-- Meta SEO Dasar (Pencarian Google) -->
+<meta name="description" content="Portofolio Ardy - Software Engineer Fullstack. Membangun arsitektur backend yang kokoh dan antarmuka web modern.">
+<meta name="keywords" content="Ardy, Software Engineer, Web Developer, Fullstack, Backend Developer, Portofolio">
+<meta name="author" content="Ardy Lasro Ganda Sihombing">
+
+<!-- Open Graph (Preview Teks & Gambar untuk WhatsApp, Facebook, LinkedIn) -->
+<meta property="og:type" content="website">
+<meta property="og:url" content="https://link-web-kamu.com/">
+<meta property="og:title" content="Ardy | Software Engineer">
+<meta property="og:description" content="Membangun arsitektur backend yang kokoh dan antarmuka web yang brutalist secara fungsional.">
+<meta property="og:image" content="https://link-web-kamu.com/thumbnail.jpg"> 
+
+<!-- Twitter / X Cards -->
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:title" content="Ardy | Software Engineer">
+<meta name="twitter:description" content="Membangun arsitektur backend yang kokoh dan antarmuka web yang brutalist secara fungsional.">
+<meta name="twitter:image" content="https://link-web-kamu.com/thumbnail.jpg">
+
+<!-- Pengaturan Web App (Mode "Add to Home Screen" di HP) -->
+<meta name="mobile-web-app-capable" content="yes">
+<meta name="apple-mobile-web-app-capable" content="yes">
+<meta name="apple-mobile-web-app-title" content="ArdyOS">
+
+    <!-- Google Fonts: Space Grotesk & JetBrains Mono -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;700&family=Space+Grotesk:wght@400;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="fix/ss.css">
+    
+    <!-- Phosphor Icons & HTML2PDF -->
+    <script src="https://unpkg.com/@phosphor-icons/web"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/html2pdf.js/0.10.1/html2pdf.bundle.min.js"></script>
+</head>
+<body>
+
+    <!-- Header & Nav -->
+    <header>
+        <div class="container nav-container">
+            <a href="#" class="logo">ARDY<span style="color:var(--neo-yellow);">_</span></a>
+            
+            <nav class="nav-links" id="nav-links">
+                <a href="#about" class="nav-item">About</a>
+                <a href="#skills" class="nav-item">Skills</a>
+                <a href="#experience" class="nav-item">Experience</a>
+                <a href="#team" class="nav-item">Team</a>
+                <a href="index.html" class="btn-cli"><i class="ph-bold ph-terminal-window"></i> Terminal GUI</a>
+            </nav>
+
+            <button class="hamburger" id="hamburger"><i class="ph-bold ph-list"></i></button>
+        </div>
+    </header>
+
+    <!-- Hero & About Section -->
+    <section class="hero" id="about">
+        <div class="container hero-grid">
+            <div class="hero-content">
+                <div class="brutal-pill reveal" style="background-color: var(--neo-green); margin-bottom: 20px;">👋 Welcome to my portfolio</div>
+                <h1 class="reveal rotate-left">Hi, I'm <br><span class="highlight-name">Ardy Engineer</span></h1>
+                
+                <p class="reveal">Membangun arsitektur backend yang kokoh dan antarmuka web yang brutalist secara fungsional.</p>
+                
+                <div class="action-group reveal">
+                    <a href="#contact" class="btn-action" style="background-color: var(--neo-yellow);">
+                        <i class="ph-bold ph-paper-plane-tilt"></i> Hire Me
+                    </a>
+                    <!-- Tombol Download CV -->
+                    <button onclick="downloadWebCV()" id="btn-dl-cv" class="btn-action" style="background-color: var(--neo-blue); color: var(--white);">
+                        <i class="ph-bold ph-download-simple"></i> <span id="cv-btn-text">Download CV</span>
+                    </button>
+                </div>
+
+                <div class="brutal-box personal-card reveal rotate-right">
+                    <ul class="info-list">
+                        <li><i class="ph-bold ph-code"></i> <span><b>Role:</b> Software Engineer (Fullstack)</span></li>
+                        <li><i class="ph-bold ph-map-pin"></i> <span><b>Location:</b> Pematangsiantar, ID</span></li>
+                        <li><i class="ph-bold ph-envelope"></i> <span><b>Email:</b> ardysihombing2006@gmail.com</span></li>
+                        <li><i class="ph-bold ph-phone"></i> <span><b>Phone:</b> +62 831 4655 7755</span></li>
+                    </ul>
+                </div>
+                
+                <!-- Live Status (Weather & Time) -->
+                <div class="live-status reveal" id="weather-widget">
+                    <div class="pulse-dot"></div> Sinkronisasi satelit cuaca...
+                </div>
+            </div>
+            
+            <div class="hero-img-box reveal rotate-left">
+                <img src="assets/ardy.jpg" alt="Ardy" class="hero-img">
+                <div class="brutal-pill sticker floating" style="background-color: var(--neo-pink);">100% Bug Free!*</div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Marquee Animation -->
+    <div class="marquee">
+        <div class="marquee-content">
+            AVAILABLE FOR WORK • FULLSTACK ENGINEER • AVAILABLE FOR WORK • FRONTEND & BACKEND • AVAILABLE FOR WORK • FULLSTACK ENGINEER • AVAILABLE FOR WORK • FRONTEND & BACKEND •
+        </div>
+    </div>
+
+    <!-- Skills Section (Animated) -->
+    <section class="section-padding" id="skills">
+        <div class="container">
+            <h2 class="section-title">My Arsenal</h2>
+            
+            <div class="skills-container brutal-box reveal">
+                <div class="skill-item">
+                    <div class="skill-header"><span>JavaScript / TypeScript</span> <span>100%</span></div>
+                    <div class="skill-bar-bg skill-animator" style="--target-width: 100%;"><div class="skill-fill"></div></div>
+                </div>
+                <div class="skill-item">
+                    <div class="skill-header"><span>Node.js / Express</span> <span>90%</span></div>
+                    <div class="skill-bar-bg skill-animator" style="--target-width: 90%;"><div class="skill-fill"></div></div>
+                </div>
+                <div class="skill-item">
+                    <div class="skill-header"><span>PHP / Laravel</span> <span>80%</span></div>
+                    <div class="skill-bar-bg skill-animator" style="--target-width: 80%;"><div class="skill-fill"></div></div>
+                </div>
+                <div class="skill-item">
+                    <div class="skill-header"><span>Python / Databases</span> <span>70%</span></div>
+                    <div class="skill-bar-bg skill-animator" style="--target-width: 70%;"><div class="skill-fill"></div></div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Experience Section -->
+    <section class="section-padding" id="experience" style="background-color: rgba(255,255,255,0.4); border-top: var(--border-thick); border-bottom: var(--border-thick);">
+        <div class="container">
+            <h2 class="section-title" style="background-color: var(--neo-pink); transform: rotate(1deg);">Experience</h2>
+            
+            <div class="timeline-grid">
+                <div class="brutal-box exp-card reveal rotate-left" style="background-color: var(--neo-blue);">
+                    <div class="exp-date">Jan 2022 – Present</div>
+                    <h3>Backend Developer</h3>
+                    <h4>Perusahaan Tech - Jakarta</h4>
+                    <p>Membangun RESTful API melayani 100k+ pengguna. Optimasi database PostgreSQL mengurangi latensi 30%.</p>
+                </div>
+                
+                <div class="brutal-box exp-card reveal rotate-right" style="background-color: var(--neo-orange);">
+                    <div class="exp-date">Mar 2020 – Dec 2021</div>
+                    <h3>Web Developer</h3>
+                    <h4>Creative Agency - Jakarta</h4>
+                    <p>Mengembangkan 15+ aplikasi web terintegrasi menggunakan MERN Stack. Resolusi bug UI/UX.</p>
+                </div>
+
+                <div class="brutal-box exp-card reveal rotate-left" style="background-color: var(--neo-green);">
+                    <div class="exp-date">Aug 2016 – Sep 2020</div>
+                    <h3>S1 Teknik Informatika</h3>
+                    <h4>Universitas Teknologi</h4>
+                    <p>Lulus Cum Laude (IPK: 3.85). Fokus riset pada keamanan jaringan web dan sistem basis data besar.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Team Section (404 Brutalist) -->
+    <section class="section-padding" id="team">
+        <div class="container">
+            <h2 class="section-title" style="background-color: var(--white); transform: rotate(-1deg);">The Squad</h2>
+            
+            <div class="brutal-box team-card reveal">
+                <h3>404: Team Not Found</h3>
+                <div class="brutal-pill" style="background-color: var(--black); color: var(--neo-yellow); margin-bottom: 20px;">STATUS: SOLO DEVELOPER</div>
+                <p style="font-family: var(--font-mono); font-size: 1.1rem; max-width: 600px; margin: 0 auto;">
+                    Saat ini saya beroperasi secara mandiri sebagai <i>One-Man Army</i>. Namun, arsitektur kode saya selalu siap untuk dikolaborasikan dan dikembangkan bersama tim yang hebat.
+                </p>
+            </div>
+        </div>
+    </section>
+
+    <!-- Contact Section -->
+    <section class="section-padding contact-wrap" id="contact">
+        <div class="container">
+            <div class="contact-card reveal rotate-right">
+                <h2>Ready to Start?</h2>
+                <p>Kirimkan transmisi ide proyek Anda atau sekadar menyapa.</p>
+                
+                <div style="margin-bottom: 30px;">
+                    <a href="mailto:ardysihombing2006@gmail.com" class="brutal-box btn-action" style="font-size:1.2rem; background:var(--white);">
+                        <i class="ph-bold ph-envelope-simple"></i> Drop an Email
+                    </a>
+                </div>
+
+                <div>
+                    <a href="https://github.com/ardyengineer" target="_blank" class="social-btn"><i class="ph-bold ph-github-logo"></i></a>
+                    <a href="https://linkedin.com/in/ardyengineer" target="_blank" class="social-btn"><i class="ph-bold ph-linkedin-logo"></i></a>
+                    <a href="#" target="_blank" class="social-btn"><i class="ph-bold ph-instagram-logo"></i></a>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <footer>
+        <div class="container">
+            <p>© <span id="year"></span> ARDY ENGINEER. BUILT WITH GEMINI</p>
+        </div>
+    </footer>
+
+    <!-- CV TEMPLATE (Hidden) -->
+    <div id="cv-template-container" style="position: absolute; left: -9999px; top: -9999px;">
+        <div id="cv-template">
+            <h1>ARDY LASRO GANDA SIHOMBING</h1>
+            <div class="contact-info">
+                Pematangsiantar, Indonesia | ardysihombing2006@gmail.com | +62 831 4655 7755<br>
+                linkedin.com/in/ardyengineer | github.com/ardyengineer
+            </div>
+            <h2>PROFESSIONAL SUMMARY</h2>
+            <p>Software Engineer dengan pengalaman lebih dari 3 tahun dalam merancang, mengembangkan, dan memelihara aplikasi backend yang scalable. Terbiasa bekerja dalam lingkungan yang dinamis dan berorientasi pada target menggunakan metodologi Agile.</p>
+            <h2>SKILLS</h2>
+            <ul>
+                <li><strong>Programming:</strong> JavaScript, TypeScript, PHP, Python, SQL</li>
+                <li><strong>Technologies:</strong> Node.js, Express, React, Laravel, Docker, Git, MySQL</li>
+            </ul>
+            <h2>WORK EXPERIENCE</h2>
+            <div>
+                <span class="job-title">Backend Developer</span>
+                <span class="job-date">Jan 2022 – Present</span>
+                <span class="company">Perusahaan Tech - Jakarta, ID</span>
+                <ul>
+                    <li>Membangun dan memelihara RESTful API, melayani 100k+ pengguna bulanan.</li>
+                    <li>Mengoptimalkan query database PostgreSQL, mengurangi latensi 30%.</li>
+                </ul>
+            </div>
+            <h2>EDUCATION</h2>
+            <div>
+                <span class="job-title">Sarjana Teknik Informatika</span>
+                <span class="job-date">Aug 2016 – Sep 2020</span>
+                <span class="company">Universitas Teknologi - Jakarta, ID</span>
+                <ul><li>Lulus dengan Predikat Cum Laude, IPK: 3.85 / 4.00.</li></ul>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        // Set tahun
+        document.getElementById('year').textContent = new Date().getFullYear();
+
+        // Hamburger Menu
+        const hamburger = document.getElementById('hamburger');
+        const navLinks = document.getElementById('nav-links');
+        const navItems = document.querySelectorAll('.nav-item');
+
+        hamburger.addEventListener('click', () => {
+            navLinks.classList.toggle('active');
+            hamburger.innerHTML = navLinks.classList.contains('active') ? '<i class="ph-bold ph-x"></i>' : '<i class="ph-bold ph-list"></i>';
+        });
+        navItems.forEach(item => {
+            item.addEventListener('click', () => {
+                navLinks.classList.remove('active');
+                hamburger.innerHTML = '<i class="ph-bold ph-list"></i>';
+            });
+        });
+
+        // --- SISTEM CUACA & WAKTU (LIVE STATUS) ---
+        const weatherWidget = document.getElementById('weather-widget');
+        
+        // Update jam setiap detik
+        function updateClock() {
+            const now = new Date();
+            const timeStr = now.toLocaleTimeString('id-ID', { hour: '2-digit', minute:'2-digit' });
+            return timeStr;
+        }
+
+        async function fetchWebWeather() {
+            try {
+                // Fetch cuaca berdasarkan IP secara gratis
+                const response = await fetch('https://wttr.in/?format=j1');
+                if (!response.ok) throw new Error('Network response was not ok');
+                const data = await response.json();
+                
+                const temp = data.current_condition[0].temp_C;
+                const desc = data.current_condition[0].weatherDesc[0].value;
+                const areaName = data.nearest_area[0].areaName[0].value;
+                
+                // Set interval untuk update jam + cuaca
+                setInterval(() => {
+                    weatherWidget.innerHTML = `<div class="pulse-dot"></div> 🕰️ ${updateClock()} WIB &nbsp;|&nbsp; 📍 ${areaName} &nbsp;|&nbsp; 🌡️ ${temp}°C (${desc})`;
+                }, 1000);
+                
+            } catch (error) {
+                weatherWidget.innerHTML = `<div class="pulse-dot" style="background:var(--neo-red);"></div> 🕰️ ${updateClock()} WIB | ⚠️ Cuaca Offline`;
+            }
+        }
+        // Panggil fungsi cuaca saat halaman dimuat
+        fetchWebWeather();
+
+        // --- SISTEM DOWNLOAD CV (PDF) ---
+        async function downloadWebCV() {
+            const btn = document.getElementById('btn-dl-cv');
+            const btnText = document.getElementById('cv-btn-text');
+            const originalText = btnText.innerText;
+            
+            // Animasi loading di tombol
+            btn.style.pointerEvents = 'none';
+            btn.style.opacity = '0.7';
+            btnText.innerText = "Generating PDF...";
+            
+            try {
+                const cvElement = document.getElementById('cv-template');
+                cvElement.style.display = 'block'; 
+                const opt = { margin: 0, filename: 'CV_Ardy_Engineer.pdf', image: { type: 'jpeg', quality: 0.98 }, html2canvas: { scale: 2 }, jsPDF: { unit: 'in', format: 'letter', orientation: 'portrait' } };
+                
+                await html2pdf().set(opt).from(cvElement).save();
+                cvElement.style.display = 'none'; 
+                
+                btnText.innerText = "Success!";
+                setTimeout(() => {
+                    btnText.innerText = originalText;
+                    btn.style.pointerEvents = 'auto';
+                    btn.style.opacity = '1';
+                }, 2000);
+                
+            } catch (error) {
+                alert("Gagal menghasilkan CV. Silakan coba lagi.");
+                btnText.innerText = originalText;
+                btn.style.pointerEvents = 'auto';
+                btn.style.opacity = '1';
+            }
+        }
+
+        // --- ANIMASI SCROLL (Intersection Observer) ---
+        const reveals = document.querySelectorAll('.reveal');
+        const revealObserver = new IntersectionObserver((entries, observer) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.classList.add('active');
+                    observer.unobserve(entry.target); 
+                }
+            });
+        }, { threshold: 0.1, rootMargin: "0px 0px -50px 0px" });
+        reveals.forEach(reveal => { revealObserver.observe(reveal); });
+
+        // Animasi bar skill
+        const skillBars = document.querySelectorAll('.skill-bar-bg');
+        const skillObserver = new IntersectionObserver((entries, observer) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.classList.add('animate');
+                    observer.unobserve(entry.target); 
+                }
+            });
+        }, { threshold: 0.5 });
+        skillBars.forEach(bar => { skillObserver.observe(bar); });
+
+    </script>
+</body>
+</html>
