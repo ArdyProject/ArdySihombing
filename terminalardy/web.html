@@ -1,0 +1,574 @@
+
+<!DOCTYPE html>
+<html lang="id" class="scroll-smooth">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+    <title>Ardy | Web Portfolio</title>
+    <link rel="icon" type="image/png" href="assets/iconku.png">
+    <!-- Tema Warna Address Bar & Status Bar HP (Sesuaikan kode warnanya) -->
+<meta name="theme-color" content="white"> 
+<meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+
+<!-- Meta SEO Dasar (Pencarian Google) -->
+<meta name="description" content="Portofolio Ardy - Software Engineer Fullstack. Membangun arsitektur backend yang kokoh dan antarmuka web modern.">
+<meta name="keywords" content="Ardy, Software Engineer, Web Developer, Fullstack, Backend Developer, Portofolio">
+<meta name="author" content="Ardy Lasro Ganda Sihombing">
+
+<!-- Open Graph (Preview Teks & Gambar untuk WhatsApp, Facebook, LinkedIn) -->
+<meta property="og:type" content="website">
+<meta property="og:url" content="https://link-web-kamu.com/">
+<meta property="og:title" content="Ardy | Software Engineer">
+<meta property="og:description" content="Membangun arsitektur backend yang kokoh dan antarmuka web yang brutalist secara fungsional.">
+<meta property="og:image" content="https://link-web-kamu.com/thumbnail.jpg"> 
+
+<!-- Twitter / X Cards -->
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:title" content="Ardy | Software Engineer">
+<meta name="twitter:description" content="Membangun arsitektur backend yang kokoh dan antarmuka web yang brutalist secara fungsional.">
+<meta name="twitter:image" content="https://link-web-kamu.com/thumbnail.jpg">
+
+<!-- Pengaturan Web App (Mode "Add to Home Screen" di HP) -->
+<meta name="mobile-web-app-capable" content="yes">
+<meta name="apple-mobile-web-app-capable" content="yes">
+<meta name="apple-mobile-web-app-title" content="ArdyOS">
+
+    <!-- Google Fonts: Space Grotesk & JetBrains Mono -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;700&family=Space+Grotesk:wght@400;600;700&display=swap" rel="stylesheet">
+    
+    <!-- Phosphor Icons & HTML2PDF -->
+    <script src="https://unpkg.com/@phosphor-icons/web"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/html2pdf.js/0.10.1/html2pdf.bundle.min.js"></script>
+
+    <style>
+        /* --- TEMA NEO-BRUTALISME --- */
+        :root {
+            --bg-paper: #f4f0ea;       
+            --black: #0f0f0f;
+            --white: #ffffff;
+            
+            /* Warna Akses Neo-Brutalist */
+            --neo-yellow: #ffde59;
+            --neo-pink: #ff90e8;
+            --neo-blue: #5271ff;
+            --neo-green: #00c950;
+            --neo-orange: #ff9752;
+            --neo-red: #ff5252;
+
+            --font-main: 'Space Grotesk', sans-serif;
+            --font-mono: 'JetBrains Mono', monospace;
+            
+            --border-thick: 3px solid var(--black);
+            --shadow-hard: 5px 5px 0px var(--black);
+            --shadow-hard-hover: 2px 2px 0px var(--black);
+            
+            --transition: all 0.2s ease-in-out;
+        }
+
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+
+        body {
+            font-family: var(--font-main);
+            background-color: var(--bg-paper);
+            color: var(--black);
+            line-height: 1.6;
+            overflow-x: hidden;
+            background-image: radial-gradient(var(--black) 1px, transparent 1px);
+            background-size: 20px 20px;
+        }
+
+        a { text-decoration: none; color: inherit; }
+        ul { list-style: none; }
+
+        /* --- UTILITY KOMPONEN --- */
+        .brutal-box {
+            background-color: var(--white);
+            border: var(--border-thick);
+            border-radius: 8px; 
+            box-shadow: var(--shadow-hard);
+            transition: var(--transition);
+        }
+        .brutal-box:hover {
+            transform: translate(3px, 3px);
+            box-shadow: var(--shadow-hard-hover);
+        }
+
+        .brutal-pill {
+            display: inline-block; padding: 5px 15px; border: var(--border-thick);
+            border-radius: 50px; font-weight: 600; font-size: 0.9rem;
+            box-shadow: 3px 3px 0px var(--black); transition: var(--transition);
+        }
+
+        .btn-action {
+            display: inline-flex; align-items: center; gap: 8px;
+            font-family: var(--font-mono); font-weight: bold; font-size: 1rem;
+            padding: 12px 24px; border: var(--border-thick); border-radius: 6px;
+            box-shadow: 4px 4px 0px var(--black); cursor: pointer; transition: var(--transition);
+            background-color: var(--white); color: var(--black);
+        }
+        .btn-action:hover { transform: translate(2px, 2px); box-shadow: 2px 2px 0px var(--black); }
+
+        .container { max-width: 1100px; margin: 0 auto; padding: 0 20px; }
+        .section-padding { padding: 100px 0; }
+        
+        .section-title {
+            font-size: clamp(2rem, 5vw, 3rem); font-weight: 700; margin-bottom: 3rem;
+            text-transform: uppercase; letter-spacing: -1px;
+            display: inline-block; background-color: var(--neo-yellow);
+            padding: 5px 15px; border: var(--border-thick);
+            box-shadow: var(--shadow-hard); transform: rotate(-2deg);
+        }
+
+        /* --- ANIMASI --- */
+        @keyframes float {
+            0% { transform: translateY(0px) rotate(15deg); }
+            50% { transform: translateY(-15px) rotate(10deg); }
+            100% { transform: translateY(0px) rotate(15deg); }
+        }
+        .floating { animation: float 4s ease-in-out infinite; }
+
+        @keyframes marquee { 0% { transform: translateX(0); } 100% { transform: translateX(-50%); } }
+        .marquee {
+            width: 100%; overflow: hidden; white-space: nowrap; border-top: var(--border-thick);
+            border-bottom: var(--border-thick); background-color: var(--neo-orange); padding: 10px 0;
+            font-family: var(--font-mono); font-weight: bold; font-size: 1.2rem; text-transform: uppercase;
+        }
+        .marquee-content { display: inline-block; animation: marquee 20s linear infinite; }
+        
+        .reveal { opacity: 0; transform: translateY(40px) rotate(0deg); transition: all 0.6s cubic-bezier(0.25, 1, 0.5, 1); }
+        .reveal.active { opacity: 1; transform: translateY(0) rotate(0deg); }
+        .reveal.active.rotate-right { transform: translateY(0) rotate(2deg); }
+        .reveal.active.rotate-left { transform: translateY(0) rotate(-2deg); }
+
+        /* --- NAVIGASI --- */
+        header { position: fixed; top: 0; left: 0; width: 100%; background-color: var(--bg-paper); border-bottom: var(--border-thick); z-index: 1000; }
+        .nav-container { display: flex; justify-content: space-between; align-items: center; height: 80px; }
+        .logo { font-size: 1.8rem; font-weight: 700; background-color: var(--neo-blue); color: var(--white); padding: 5px 15px; border: var(--border-thick); transform: rotate(-3deg); display: inline-block;}
+        .nav-links { display: flex; gap: 20px; align-items: center; }
+        .nav-links a.nav-item { font-weight: 600; font-size: 1rem; padding: 5px 10px; transition: var(--transition); }
+        .nav-links a.nav-item:hover { background-color: var(--neo-yellow); border-radius: 4px; }
+        
+        .btn-cli { background-color: var(--black); color: var(--neo-green); padding: 8px 16px; border: var(--border-thick); font-family: var(--font-mono); font-weight: bold; box-shadow: 4px 4px 0px var(--neo-green); border-radius: 4px; }
+        .btn-cli:hover { transform: translate(2px, 2px); box-shadow: 2px 2px 0px var(--neo-green); color: var(--white); }
+        .hamburger { display: none; background: var(--neo-yellow); border: var(--border-thick); padding: 10px; box-shadow: 3px 3px 0px var(--black); cursor: pointer; border-radius: 4px; font-size: 1.5rem;}
+
+        /* --- HERO & ABOUT --- */
+        .hero { padding-top: 120px; padding-bottom: 60px; }
+        .hero-grid { display: grid; grid-template-columns: 1.2fr 0.8fr; gap: 40px; align-items: center; }
+        
+        /* Font dinamis untuk mencegah overflow di mobile */
+        .hero-content h1 { font-size: clamp(2.2rem, 8vw, 4.5rem); line-height: 1.1; margin-bottom: 20px; text-transform: uppercase; letter-spacing: -2px; }
+        .highlight-name { background-color: var(--neo-pink); display: inline-block; padding: 0 10px; border: var(--border-thick); word-break: break-word;}
+        .hero-content p { font-size: clamp(1rem, 3vw, 1.2rem); font-weight: 500; margin-bottom: 30px; }
+
+        .action-group { display: flex; gap: 15px; flex-wrap: wrap; margin-bottom: 30px; }
+
+        .personal-card { background-color: var(--neo-yellow); padding: 25px; transform: rotate(2deg); position: relative; }
+        .personal-card::before { content: ''; position: absolute; top: -15px; left: 50%; transform: translateX(-50%) rotate(-3deg); width: 100px; height: 30px; background-color: rgba(255,255,255,0.7); border: 1px solid rgba(0,0,0,0.2); }
+        .info-list { font-family: var(--font-mono); font-size: 0.95rem; display: flex; flex-direction: column; gap: 12px;}
+        .info-list li { display: flex; align-items: flex-start; gap: 10px; border-bottom: 2px dashed var(--black); padding-bottom: 8px;}
+        .info-list li i { font-size: 1.3rem; margin-top: 2px; flex-shrink: 0;}
+        .info-list li span { flex-grow: 1; word-break: break-word; overflow-wrap: anywhere; line-height: 1.4; }
+
+        .live-status { background-color: var(--white); font-family: var(--font-mono); padding: 10px 15px; border: var(--border-thick); display: inline-flex; align-items: center; gap: 10px; font-size: 0.85rem; font-weight: bold; border-radius: 6px; margin-top: 20px; box-shadow: 3px 3px 0px var(--black); transform: rotate(-1deg);}
+        .pulse-dot { width: 10px; height: 10px; background-color: var(--neo-green); border-radius: 50%; border: 1px solid var(--black); animation: pulse 1.5s infinite; }
+        @keyframes pulse { 0% { box-shadow: 0 0 0 0 rgba(0,201,80,0.7); } 70% { box-shadow: 0 0 0 5px rgba(0,201,80,0); } 100% { box-shadow: 0 0 0 0 rgba(0,201,80,0); } }
+
+        .hero-img-box { position: relative; text-align: center; }
+        .hero-img { width: 100%; max-width: 350px; aspect-ratio: 1/1; object-fit: cover; border: var(--border-thick); box-shadow: 10px 10px 0px var(--neo-blue); border-radius: 20px; transform: rotate(-2deg); filter: grayscale(100%) contrast(1.2); transition: var(--transition); }
+        .hero-img:hover { filter: grayscale(0%); transform: rotate(0deg); }
+        .sticker { position: absolute; bottom: -20px; right: 20px; }
+
+        /* --- SKILLS --- */
+        .skills-container { background-color: var(--white); padding: 40px; border: var(--border-thick); box-shadow: var(--shadow-hard); border-radius: 12px; }
+        .skill-item { margin-bottom: 25px; }
+        .skill-header { display: flex; justify-content: space-between; font-weight: 700; font-size: 1.1rem; margin-bottom: 10px; text-transform: uppercase;}
+        .skill-bar-bg { width: 100%; height: 25px; border: var(--border-thick); background-color: var(--bg-paper); border-radius: 50px; overflow: hidden; position: relative;}
+        .skill-fill { height: 100%; background-color: var(--neo-green); border-right: var(--border-thick); width: 0%; transition: width 1.5s cubic-bezier(0.22, 1, 0.36, 1); }
+        .skill-item:nth-child(2) .skill-fill { background-color: var(--neo-blue); }
+        .skill-item:nth-child(3) .skill-fill { background-color: var(--neo-orange); }
+        .skill-item:nth-child(4) .skill-fill { background-color: var(--neo-pink); }
+        .skill-bar-bg.animate .skill-fill { width: var(--target-width); }
+
+        /* --- PENGALAMAN --- */
+        .timeline-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 30px; }
+        .exp-card { color: var(--white); padding: 30px; }
+        .exp-date { background: var(--black); color: var(--white); padding: 5px 10px; display: inline-block; font-family: var(--font-mono); font-size: 0.85rem; margin-bottom: 15px; border-radius: 4px;}
+        .exp-card h3 { font-size: 1.5rem; margin-bottom: 5px; text-transform: uppercase; border-bottom: 3px solid var(--black); padding-bottom: 10px;}
+        .exp-card h4 { font-size: 1rem; margin-bottom: 15px; font-weight: 600;}
+        .exp-card p { font-size: 0.95rem; font-family: var(--font-mono); }
+
+        /* --- TEAM (404 STYLE) --- */
+        .team-card { background-color: var(--neo-red); padding: 40px; text-align: center; color: var(--white); position: relative; overflow: hidden;}
+        .team-card::before { content: 'ERROR'; position: absolute; font-size: 10rem; opacity: 0.1; top: -20px; left: -10px; font-family: var(--font-mono); pointer-events: none;}
+        .team-card h3 { font-size: clamp(2rem, 5vw, 3rem); text-transform: uppercase; margin-bottom: 10px; text-shadow: 3px 3px 0px var(--black);}
+
+        /* --- KONTAK --- */
+        .contact-wrap { text-align: center; }
+        .contact-card { background-color: var(--neo-pink); padding: 50px 30px; max-width: 700px; margin: 0 auto; border: var(--border-thick); box-shadow: 15px 15px 0px var(--black); border-radius: 12px; }
+        .contact-card h2 { font-size: clamp(2rem, 6vw, 3rem); text-transform: uppercase; margin-bottom: 20px;}
+        .social-btn { background-color: var(--white); border: var(--border-thick); padding: 15px; font-size: 1.8rem; display: inline-flex; border-radius: 50%; box-shadow: 4px 4px 0px var(--black); color: var(--black); transition: var(--transition); margin: 0 10px; }
+        .social-btn:hover { background-color: var(--neo-yellow); transform: translate(3px, 3px); box-shadow: 1px 1px 0px var(--black); }
+
+        footer { text-align: center; padding: 30px 0; font-family: var(--font-mono); font-weight: bold; border-top: var(--border-thick); margin-top: 80px; background-color: var(--white);}
+
+        /* --- RESPONSIVE MOBILE FIXES --- */
+        @media (max-width: 900px) {
+            .hero-grid { grid-template-columns: 1fr; text-align: center; }
+            .personal-card { transform: rotate(0); text-align: left; max-width: 500px; margin: 0 auto; }
+            .hero-img { max-width: 250px; margin: 0 auto; }
+            .live-status { transform: rotate(0); justify-content: center;}
+            .action-group { justify-content: center; }
+        }
+
+        @media (max-width: 768px) {
+            .hamburger { display: block; }
+            .nav-links {
+                position: fixed; top: 80px; left: -100%; width: 100%; height: calc(100vh - 80px);
+                background-color: var(--neo-blue); flex-direction: column; padding: 40px 20px;
+                transition: var(--transition); border-top: var(--border-thick); z-index: 999;
+            }
+            .nav-links.active { left: 0; }
+            .nav-links a.nav-item { font-size: 1.5rem; color: var(--white); text-transform: uppercase;}
+            .btn-cli { width: 100%; justify-content: center; margin-top: 20px;}
+            
+            .personal-card { padding: 20px 15px; }
+            .info-list { font-size: 0.85rem; }
+            .skills-container { padding: 25px; }
+            .social-btn { padding: 12px; font-size: 1.5rem; margin: 0 5px;}
+        }
+
+        /* --- HIDDEN CV TEMPLATE --- */
+        #cv-template {
+            display: none; width: 800px; padding: 40px; background-color: white; color: black;
+            font-family: 'Helvetica Neue', Helvetica, Arial, sans-serif; line-height: 1.6;
+        }
+        #cv-template h1 { font-size: 24px; text-align: center; margin-bottom: 5px; letter-spacing: 1px;}
+        #cv-template .contact-info { text-align: center; font-size: 12px; margin-bottom: 20px; color: #333;}
+        #cv-template .contact-info a { color: #0a84ff; text-decoration: none; margin: 0 5px; }
+        #cv-template h2 { font-size: 14px; border-bottom: 2px solid #333; margin-top: 20px; margin-bottom: 10px; text-transform: uppercase; padding-bottom: 4px; font-weight: bold;}
+        #cv-template p { font-size: 12px; margin-bottom: 10px; text-align: justify; }
+        #cv-template ul { margin-left: 20px; font-size: 12px; margin-bottom: 10px;}
+        #cv-template li { margin-bottom: 5px; }
+        #cv-template .job-title { font-weight: bold; font-size: 13px;}
+        #cv-template .job-date { float: right; font-style: italic; font-size: 12px; color: #555;}
+        #cv-template .company { font-style: italic; margin-bottom: 5px; display: block; font-size: 12px;}
+    </style>
+</head>
+<body>
+
+    <!-- Header & Nav -->
+    <header>
+        <div class="container nav-container">
+            <a href="#" class="logo">ARDY<span style="color:var(--neo-yellow);">_</span></a>
+            
+            <nav class="nav-links" id="nav-links">
+                <a href="#about" class="nav-item">About</a>
+                <a href="#skills" class="nav-item">Skills</a>
+                <a href="#experience" class="nav-item">Experience</a>
+                <a href="#team" class="nav-item">Team</a>
+                <a href="index.html" class="btn-cli"><i class="ph-bold ph-terminal-window"></i> Terminal GUI</a>
+            </nav>
+
+            <button class="hamburger" id="hamburger"><i class="ph-bold ph-list"></i></button>
+        </div>
+    </header>
+
+    <!-- Hero & About Section -->
+    <section class="hero" id="about">
+        <div class="container hero-grid">
+            <div class="hero-content">
+                <div class="brutal-pill reveal" style="background-color: var(--neo-green); margin-bottom: 20px;">👋 Welcome to my portfolio</div>
+                <h1 class="reveal rotate-left">Hi, I'm <br><span class="highlight-name">Ardy Engineer</span></h1>
+                
+                <p class="reveal">Membangun arsitektur backend yang kokoh dan antarmuka web yang brutalist secara fungsional.</p>
+                
+                <div class="action-group reveal">
+                    <a href="#contact" class="btn-action" style="background-color: var(--neo-yellow);">
+                        <i class="ph-bold ph-paper-plane-tilt"></i> Hire Me
+                    </a>
+                    <!-- Tombol Download CV -->
+                    <button onclick="downloadWebCV()" id="btn-dl-cv" class="btn-action" style="background-color: var(--neo-blue); color: var(--white);">
+                        <i class="ph-bold ph-download-simple"></i> <span id="cv-btn-text">Download CV</span>
+                    </button>
+                </div>
+
+                <div class="brutal-box personal-card reveal rotate-right">
+                    <ul class="info-list">
+                        <li><i class="ph-bold ph-code"></i> <span><b>Role:</b> Software Engineer (Fullstack)</span></li>
+                        <li><i class="ph-bold ph-map-pin"></i> <span><b>Location:</b> Pematangsiantar, ID</span></li>
+                        <li><i class="ph-bold ph-envelope"></i> <span><b>Email:</b> ardysihombing2006@gmail.com</span></li>
+                        <li><i class="ph-bold ph-phone"></i> <span><b>Phone:</b> +62 831 4655 7755</span></li>
+                    </ul>
+                </div>
+                
+                <!-- Live Status (Weather & Time) -->
+                <div class="live-status reveal" id="weather-widget">
+                    <div class="pulse-dot"></div> Sinkronisasi satelit cuaca...
+                </div>
+            </div>
+            
+            <div class="hero-img-box reveal rotate-left">
+                <img src="assets/ardy.jpg" alt="Ardy" class="hero-img">
+                <div class="brutal-pill sticker floating" style="background-color: var(--neo-pink);">100% Bug Free!*</div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Marquee Animation -->
+    <div class="marquee">
+        <div class="marquee-content">
+            AVAILABLE FOR WORK • FULLSTACK ENGINEER • AVAILABLE FOR WORK • FRONTEND & BACKEND • AVAILABLE FOR WORK • FULLSTACK ENGINEER • AVAILABLE FOR WORK • FRONTEND & BACKEND •
+        </div>
+    </div>
+
+    <!-- Skills Section (Animated) -->
+    <section class="section-padding" id="skills">
+        <div class="container">
+            <h2 class="section-title">My Arsenal</h2>
+            
+            <div class="skills-container brutal-box reveal">
+                <div class="skill-item">
+                    <div class="skill-header"><span>JavaScript / TypeScript</span> <span>100%</span></div>
+                    <div class="skill-bar-bg skill-animator" style="--target-width: 100%;"><div class="skill-fill"></div></div>
+                </div>
+                <div class="skill-item">
+                    <div class="skill-header"><span>Node.js / Express</span> <span>90%</span></div>
+                    <div class="skill-bar-bg skill-animator" style="--target-width: 90%;"><div class="skill-fill"></div></div>
+                </div>
+                <div class="skill-item">
+                    <div class="skill-header"><span>PHP / Laravel</span> <span>80%</span></div>
+                    <div class="skill-bar-bg skill-animator" style="--target-width: 80%;"><div class="skill-fill"></div></div>
+                </div>
+                <div class="skill-item">
+                    <div class="skill-header"><span>Python / Databases</span> <span>70%</span></div>
+                    <div class="skill-bar-bg skill-animator" style="--target-width: 70%;"><div class="skill-fill"></div></div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Experience Section -->
+    <section class="section-padding" id="experience" style="background-color: rgba(255,255,255,0.4); border-top: var(--border-thick); border-bottom: var(--border-thick);">
+        <div class="container">
+            <h2 class="section-title" style="background-color: var(--neo-pink); transform: rotate(1deg);">Experience</h2>
+            
+            <div class="timeline-grid">
+                <div class="brutal-box exp-card reveal rotate-left" style="background-color: var(--neo-blue);">
+                    <div class="exp-date">Jan 2022 – Present</div>
+                    <h3>Backend Developer</h3>
+                    <h4>Perusahaan Tech - Jakarta</h4>
+                    <p>Membangun RESTful API melayani 100k+ pengguna. Optimasi database PostgreSQL mengurangi latensi 30%.</p>
+                </div>
+                
+                <div class="brutal-box exp-card reveal rotate-right" style="background-color: var(--neo-orange);">
+                    <div class="exp-date">Mar 2020 – Dec 2021</div>
+                    <h3>Web Developer</h3>
+                    <h4>Creative Agency - Jakarta</h4>
+                    <p>Mengembangkan 15+ aplikasi web terintegrasi menggunakan MERN Stack. Resolusi bug UI/UX.</p>
+                </div>
+
+                <div class="brutal-box exp-card reveal rotate-left" style="background-color: var(--neo-green);">
+                    <div class="exp-date">Aug 2016 – Sep 2020</div>
+                    <h3>S1 Teknik Informatika</h3>
+                    <h4>Universitas Teknologi</h4>
+                    <p>Lulus Cum Laude (IPK: 3.85). Fokus riset pada keamanan jaringan web dan sistem basis data besar.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Team Section (404 Brutalist) -->
+    <section class="section-padding" id="team">
+        <div class="container">
+            <h2 class="section-title" style="background-color: var(--white); transform: rotate(-1deg);">The Squad</h2>
+            
+            <div class="brutal-box team-card reveal">
+                <h3>404: Team Not Found</h3>
+                <div class="brutal-pill" style="background-color: var(--black); color: var(--neo-yellow); margin-bottom: 20px;">STATUS: SOLO DEVELOPER</div>
+                <p style="font-family: var(--font-mono); font-size: 1.1rem; max-width: 600px; margin: 0 auto;">
+                    Saat ini saya beroperasi secara mandiri sebagai <i>One-Man Army</i>. Namun, arsitektur kode saya selalu siap untuk dikolaborasikan dan dikembangkan bersama tim yang hebat.
+                </p>
+            </div>
+        </div>
+    </section>
+
+    <!-- Contact Section -->
+    <section class="section-padding contact-wrap" id="contact">
+        <div class="container">
+            <div class="contact-card reveal rotate-right">
+                <h2>Ready to Start?</h2>
+                <p>Kirimkan transmisi ide proyek Anda atau sekadar menyapa.</p>
+                
+                <div style="margin-bottom: 30px;">
+                    <a href="mailto:ardysihombing2006@gmail.com" class="brutal-box btn-action" style="font-size:1.2rem; background:var(--white);">
+                        <i class="ph-bold ph-envelope-simple"></i> Drop an Email
+                    </a>
+                </div>
+
+                <div>
+                    <a href="https://github.com/ardyengineer" target="_blank" class="social-btn"><i class="ph-bold ph-github-logo"></i></a>
+                    <a href="https://linkedin.com/in/ardyengineer" target="_blank" class="social-btn"><i class="ph-bold ph-linkedin-logo"></i></a>
+                    <a href="#" target="_blank" class="social-btn"><i class="ph-bold ph-instagram-logo"></i></a>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <footer>
+        <div class="container">
+            <p>© <span id="year"></span> ARDY ENGINEER. BUILT WITH GEMINI</p>
+        </div>
+    </footer>
+
+    <!-- CV TEMPLATE (Hidden) -->
+    <div id="cv-template-container" style="position: absolute; left: -9999px; top: -9999px;">
+        <div id="cv-template">
+            <h1>ARDY LASRO GANDA SIHOMBING</h1>
+            <div class="contact-info">
+                Pematangsiantar, Indonesia | ardysihombing2006@gmail.com | +62 831 4655 7755<br>
+                linkedin.com/in/ardyengineer | github.com/ardyengineer
+            </div>
+            <h2>PROFESSIONAL SUMMARY</h2>
+            <p>Software Engineer dengan pengalaman lebih dari 3 tahun dalam merancang, mengembangkan, dan memelihara aplikasi backend yang scalable. Terbiasa bekerja dalam lingkungan yang dinamis dan berorientasi pada target menggunakan metodologi Agile.</p>
+            <h2>SKILLS</h2>
+            <ul>
+                <li><strong>Programming:</strong> JavaScript, TypeScript, PHP, Python, SQL</li>
+                <li><strong>Technologies:</strong> Node.js, Express, React, Laravel, Docker, Git, MySQL</li>
+            </ul>
+            <h2>WORK EXPERIENCE</h2>
+            <div>
+                <span class="job-title">Backend Developer</span>
+                <span class="job-date">Jan 2022 – Present</span>
+                <span class="company">Perusahaan Tech - Jakarta, ID</span>
+                <ul>
+                    <li>Membangun dan memelihara RESTful API, melayani 100k+ pengguna bulanan.</li>
+                    <li>Mengoptimalkan query database PostgreSQL, mengurangi latensi 30%.</li>
+                </ul>
+            </div>
+            <h2>EDUCATION</h2>
+            <div>
+                <span class="job-title">Sarjana Teknik Informatika</span>
+                <span class="job-date">Aug 2016 – Sep 2020</span>
+                <span class="company">Universitas Teknologi - Jakarta, ID</span>
+                <ul><li>Lulus dengan Predikat Cum Laude, IPK: 3.85 / 4.00.</li></ul>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        // Set tahun
+        document.getElementById('year').textContent = new Date().getFullYear();
+
+        // Hamburger Menu
+        const hamburger = document.getElementById('hamburger');
+        const navLinks = document.getElementById('nav-links');
+        const navItems = document.querySelectorAll('.nav-item');
+
+        hamburger.addEventListener('click', () => {
+            navLinks.classList.toggle('active');
+            hamburger.innerHTML = navLinks.classList.contains('active') ? '<i class="ph-bold ph-x"></i>' : '<i class="ph-bold ph-list"></i>';
+        });
+        navItems.forEach(item => {
+            item.addEventListener('click', () => {
+                navLinks.classList.remove('active');
+                hamburger.innerHTML = '<i class="ph-bold ph-list"></i>';
+            });
+        });
+
+        // --- SISTEM CUACA & WAKTU (LIVE STATUS) ---
+        const weatherWidget = document.getElementById('weather-widget');
+        
+        // Update jam setiap detik
+        function updateClock() {
+            const now = new Date();
+            const timeStr = now.toLocaleTimeString('id-ID', { hour: '2-digit', minute:'2-digit' });
+            return timeStr;
+        }
+
+        async function fetchWebWeather() {
+            try {
+                // Fetch cuaca berdasarkan IP secara gratis
+                const response = await fetch('https://wttr.in/?format=j1');
+                if (!response.ok) throw new Error('Network response was not ok');
+                const data = await response.json();
+                
+                const temp = data.current_condition[0].temp_C;
+                const desc = data.current_condition[0].weatherDesc[0].value;
+                const areaName = data.nearest_area[0].areaName[0].value;
+                
+                // Set interval untuk update jam + cuaca
+                setInterval(() => {
+                    weatherWidget.innerHTML = `<div class="pulse-dot"></div> 🕰️ ${updateClock()} WIB &nbsp;|&nbsp; 📍 ${areaName} &nbsp;|&nbsp; 🌡️ ${temp}°C (${desc})`;
+                }, 1000);
+                
+            } catch (error) {
+                weatherWidget.innerHTML = `<div class="pulse-dot" style="background:var(--neo-red);"></div> 🕰️ ${updateClock()} WIB | ⚠️ Cuaca Offline`;
+            }
+        }
+        // Panggil fungsi cuaca saat halaman dimuat
+        fetchWebWeather();
+
+        // --- SISTEM DOWNLOAD CV (PDF) ---
+        async function downloadWebCV() {
+            const btn = document.getElementById('btn-dl-cv');
+            const btnText = document.getElementById('cv-btn-text');
+            const originalText = btnText.innerText;
+            
+            // Animasi loading di tombol
+            btn.style.pointerEvents = 'none';
+            btn.style.opacity = '0.7';
+            btnText.innerText = "Generating PDF...";
+            
+            try {
+                const cvElement = document.getElementById('cv-template');
+                cvElement.style.display = 'block'; 
+                const opt = { margin: 0, filename: 'CV_Ardy_Engineer.pdf', image: { type: 'jpeg', quality: 0.98 }, html2canvas: { scale: 2 }, jsPDF: { unit: 'in', format: 'letter', orientation: 'portrait' } };
+                
+                await html2pdf().set(opt).from(cvElement).save();
+                cvElement.style.display = 'none'; 
+                
+                btnText.innerText = "Success!";
+                setTimeout(() => {
+                    btnText.innerText = originalText;
+                    btn.style.pointerEvents = 'auto';
+                    btn.style.opacity = '1';
+                }, 2000);
+                
+            } catch (error) {
+                alert("Gagal menghasilkan CV. Silakan coba lagi.");
+                btnText.innerText = originalText;
+                btn.style.pointerEvents = 'auto';
+                btn.style.opacity = '1';
+            }
+        }
+
+        // --- ANIMASI SCROLL (Intersection Observer) ---
+        const reveals = document.querySelectorAll('.reveal');
+        const revealObserver = new IntersectionObserver((entries, observer) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.classList.add('active');
+                    observer.unobserve(entry.target); 
+                }
+            });
+        }, { threshold: 0.1, rootMargin: "0px 0px -50px 0px" });
+        reveals.forEach(reveal => { revealObserver.observe(reveal); });
+
+        // Animasi bar skill
+        const skillBars = document.querySelectorAll('.skill-bar-bg');
+        const skillObserver = new IntersectionObserver((entries, observer) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.classList.add('animate');
+                    observer.unobserve(entry.target); 
+                }
+            });
+        }, { threshold: 0.5 });
+        skillBars.forEach(bar => { skillObserver.observe(bar); });
+
+    </script>
+</body>
+</html>
